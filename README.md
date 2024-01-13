@@ -2,7 +2,7 @@
 
 This is a simple JavaScript program that displays the current day and time in a specified format.
 
-Exercise: Write a JavaScript program to display the current day and time in the following format.
+Exercise: Write a JavaScript program to display the current day and time in the following format (see Example Output).
 
 ## Functionality
 
