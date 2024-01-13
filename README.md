@@ -13,8 +13,6 @@ The program accomplishes the following:
 - Converts the 24-hour time to a 12-hour format and includes AM/PM indicators.
 - Displays the formatted output.
 
-## Usage
-
 ## Example Output
 
 `Today is: Tuesday
