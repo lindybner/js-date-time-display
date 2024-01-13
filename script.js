@@ -1,53 +1,38 @@
+// Get the current date and time
 const currentDate = new Date();
 const hr24 = currentDate.getHours();
-let ampm;
-let hrNoFormat;
-let hr;
+
+// Determine AM/PM and format the hour
+const ampm = hr24 >= 12 ? "PM" : "AM";
+const hrNoFormat = hr24 % 12 || 12;
+const hr = hrNoFormat < 10 ? `0${hrNoFormat}` : `${hrNoFormat}`;
+
+// Get and format minutes
 const minNoFormat = currentDate.getMinutes();
-let min;
+const min = minNoFormat < 10 ? `0${minNoFormat}` : `${minNoFormat}`;
+
+// Get and format seconds
 const secNoFormat = currentDate.getSeconds();
-let sec;
+const sec = secNoFormat < 10 ? `0${secNoFormat}` : `${secNoFormat}`;
+
+// Get the day of the week
 const dayIndex = currentDate.getDay();
 const daysOfWeek = [
   "Sunday",
   "Monday",
   "Tuesday",
-  "wednesday",
+  "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
 ];
 const day = daysOfWeek[dayIndex];
-let currentDayAndTime;
 
-let output = document.querySelector("div.output");
+// Create a string with the current day and time
+const currentDayAndTime = `Today is: ${day}<br>Current time is: ${hr} ${ampm} : ${min} : ${sec}`;
 
-if (hr24 >= 12) {
-  ampm = "PM";
-  hrNoFormat = hr24 % 12 || 12;
-} else {
-  ampm = "AM";
-  hrNoFormat = hr24 % 12 || 12;
-}
+// Select the HTML element for output
+const output = document.querySelector("div.output");
 
-if (hrNoFormat < 10) {
-  hr = "0" + hrNoFormat;
-} else {
-  hr = hrNoFormat;
-}
-
-if (minNoFormat < 10) {
-  min = "0" + minNoFormat;
-} else {
-  min = minNoFormat;
-}
-
-if (secNoFormat < 10) {
-  sec = "0" + secNoFormat;
-} else {
-  sec = secNoFormat;
-}
-
-currentDayAndTime = `Today is: ${day}<br>Current time is : ${hr} ${ampm} : ${min} : ${sec}`;
-
+// Display the current day and time on the webpage
 output.innerHTML = currentDayAndTime;
