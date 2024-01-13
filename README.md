@@ -18,5 +18,4 @@ The program accomplishes the following:
 ## Example Output
 
 `Today is: Tuesday
-
 Current time is: 3 PM : 30 : 45`
