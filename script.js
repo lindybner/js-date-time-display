@@ -4,7 +4,7 @@ function formatHour(hr24) {
   const ampm = hr24 >= 12 ? "PM" : "AM";
   // Calculate the hour in 12-hour format, considering 12 as the maximum
   const hrNoFormat = hr24 % 12 || 12;
-  // If the hour is less than 10, add a leading zero; otherwise, just the hour
+  // If the hour is less than 10, add a leading zero; otherwise, just the hour (+ AM/PM in both instances)
   return hrNoFormat < 10 ? `0${hrNoFormat} ${ampm}` : `${hrNoFormat} ${ampm}`;
 }
 
