@@ -1,38 +1,48 @@
-// Get the current date and time
-const currentDate = new Date();
-const hr24 = currentDate.getHours();
+// Function to format the hour
+function formatHour(hr24) {
+  const ampm = hr24 >= 12 ? "PM" : "AM";
+  const hrNoFormat = hr24 % 12 || 12;
+  return hrNoFormat < 10 ? `0${hrNoFormat}` : `${hrNoFormat} ${ampm}`;
+}
 
-// Determine AM/PM and format the hour
-const ampm = hr24 >= 12 ? "PM" : "AM";
-const hrNoFormat = hr24 % 12 || 12;
-const hr = hrNoFormat < 10 ? `0${hrNoFormat}` : `${hrNoFormat}`;
+// Function to format minutes and seconds
+function formatTimeComponent(component) {
+  return component < 10 ? `0${component}` : `${component}`;
+}
 
-// Get and format minutes
-const minNoFormat = currentDate.getMinutes();
-const min = minNoFormat < 10 ? `0${minNoFormat}` : `${minNoFormat}`;
+// Function to get the current day
+function getCurrentDay() {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dayIndex = new Date().getDay();
+  return daysOfWeek[dayIndex];
+}
 
-// Get and format seconds
-const secNoFormat = currentDate.getSeconds();
-const sec = secNoFormat < 10 ? `0${secNoFormat}` : `${secNoFormat}`;
+// Function to get the current date and time in a formatted string
+function getCurrentDayAndTime() {
+  const currentDate = new Date();
+  const hr24 = currentDate.getHours();
+  const hr = formatHour(hr24);
+  const min = formatTimeComponent(currentDate.getMinutes());
+  const sec = formatTimeComponent(currentDate.getSeconds());
+  const day = getCurrentDay();
 
-// Get the day of the week
-const dayIndex = currentDate.getDay();
-const daysOfWeek = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-const day = daysOfWeek[dayIndex];
+  return `Today is: ${day}<br>Current time is: ${hr} : ${min} : ${sec}`;
+}
 
-// Create a string with the current day and time
-const currentDayAndTime = `Today is: ${day}<br>Current time is: ${hr} ${ampm} : ${min} : ${sec}`;
+// Function to display the current day and time on the webpage
+function displayCurrentDayAndTime() {
+  const currentDayAndTime = getCurrentDayAndTime();
+  const output = document.querySelector("div.output");
+  output.innerHTML = currentDayAndTime;
+}
 
-// Select the HTML element for output
-const output = document.querySelector("div.output");
-
-// Display the current day and time on the webpage
-output.innerHTML = currentDayAndTime;
+// Call the function to display the current day and time
+displayCurrentDayAndTime();
